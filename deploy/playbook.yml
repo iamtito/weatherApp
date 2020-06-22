@@ -14,24 +14,25 @@
   hosts: all
   vars:
     - action: "deploy"
+    - deploy_path: "/home/ubuntu/k8s-deploy.yml"
   tasks:
     - name: Copy Kubernetes Deploy File 
       copy:
         src: "k8s-deploy.yml"
-        dest: ~/k8s-deploy.yml
+        dest: "{{ deploy_path }}"
         backup: yes
       become: yes
       become_user: root
 
     - name: Deploy Weather App
-      command: kubectl apply -f ~/k8s-deploy.yml
+      command: kubectl apply -f {{ deploy_path }}
       register: deploy
       when: action == "deploy"
     - debug: var=deploy
       when: action == "deploy"
 
     - name: Delete weather App Deployment
-      command: kubectl delete -f ~/k8s-deploy.yml
+      command: kubectl delete -f {{ deploy_path }}
       register: delete
       when: action == "delete"
 
