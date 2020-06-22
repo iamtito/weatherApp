@@ -37,5 +37,5 @@ jobs:
       run: |
         set -exv
         echo "REACT_APP_API_KEY=${{ secrets.REACT_APP_API_KEY }}" > .env
-        sudo docker build -t tbola45/weatherapp:latest .
-        sudo docker push tbola45/weatherapp:latest
+        docker build -t tbola45/weatherapp:latest .
+        docker push tbola45/weatherapp:latest
