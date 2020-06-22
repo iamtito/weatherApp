@@ -16,8 +16,8 @@ on:
   push:
     branches:
       - master
-    paths-ignore:
-      - '.github/**'
+    # paths-ignore:
+    #   - '.github/**'
       
   #Below triggers this workflow, usage is in the above description
   repository_dispatch:
