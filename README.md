@@ -1,4 +1,5 @@
-<<<<<<< HEAD
+![Docker Build & Push](https://github.com/iamtito/weatherApp/workflows/Docker%20Build%20&%20Push/badge.svg)
+
 ## Weather App
 
 Enter the city and the weather report will get generated
@@ -38,6 +39,3 @@ The deploy folder also has a file called `ldap-server.yml` which creates an ldap
 This readme will be improved to include how to dynamically create infrastrututre using Terraform and Github Action CI/CD
 
 Add more feature to the weatherApp such as news feature
-=======
-# weatherApp
->>>>>>> 2195132ee582148c7cfa0c261670e040deee397a

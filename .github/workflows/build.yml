@@ -38,8 +38,4 @@ jobs:
         set -exv
         echo "REACT_APP_API_KEY=${{ secrets.REACT_APP_API_KEY }}" > .env
         sudo docker build -t tbola45/weatherapp:latest .
-
-    - name: Push WeatherApp Image to Dockerhub
-      run: |
-        set -exv
         sudo docker push tbola45/weatherapp:latest
