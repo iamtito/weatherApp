@@ -2,9 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: weather-app-deployment
-  namespace: ns-weather
 spec:
-  replicas: 3
+  replicas: 6
   selector:
     matchLabels:
       app: weather-app
@@ -18,20 +17,16 @@ spec:
           image: tbola45/weatherapp
           ports:
             - containerPort: 80
-          env:
-            - name: REACT_APP_API_KEY
-              value: "19fd99b118msh95e36353c34ebd9p1fc232jsn1060ab414f58"
-            
+
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: weather-app-service
-  namespace: ns-weather
 spec:
   type: LoadBalancer
   ports:
-    - port: 81
+    - port: 80
       targetPort: 80
   selector:
     app: weather-app

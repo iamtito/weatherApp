@@ -23,7 +23,6 @@ on:
   repository_dispatch:
     types: trigger-build
 
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -34,9 +33,13 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build & Push the weatherApp Docker Image to Dockerhub
+    - name: Build the weatherApp Docker Image
       run: |
         set -exv
-        echo "EACT_APP_API_KEY=${{ secrets.REACT_APP_API_KEY }}" > .env
+        echo "REACT_APP_API_KEY=${{ secrets.REACT_APP_API_KEY }}" > .env
         sudo docker build -t tbola45/weatherapp:latest .
+
+    - name: Push WeatherApp Image to Dockerhub
+      run: |
+        set -exv
         sudo docker push tbola45/weatherapp:latest
