@@ -1,12 +1,30 @@
 ![Docker Build & Push](https://github.com/iamtito/weatherApp/workflows/Docker%20Build%20&%20Push/badge.svg)
 
 ## Weather App
+A small react weather application that gives the weather update on a city. 
 
-Enter the city and the weather report will get generated
+Local setup
+
+```
+git clone https://github.com/iamtito/weatherApp.git
+cd weatherApp
+docker build -t weatherapp:latest .
+docker run -it --rm -p 8080:80 weatherapp:latest
+```
+On your browser, navigate to [localhost:8080](http://localhost:8080)
+Note: After cloning update the `.env` file with your `X-RapidAPI-Key` value before building the image
+
+Enter the city and the weather report will get generated.
+
 ## Deployment
-This uses github actions for the push, it listes on push request to the repository and triggers a docker build. Once build is completed, it pushes it to docker hub to be used by the kubernetes' deployment.
+This uses github actions for the build process. The Github Action event listen on push request to the repository and triggers a docker build. Once build is completed, it pushes it to docker hub to be used by the kubernetes' deployment.
+The github action can be found in this location: https://github.com/iamtito/weatherApp/actions
 
-We use ansible to run the kubenetes deployment. cd into the `deploy` folder and 
+We use ansible to run the kubenetes deployment. 
+The cluster can be setup using this script: [create-k8s-cluster.sh](https://github.com/iamtito/weatherApp/blob/master/deploy/create-k8s-cluster.sh)
+Read through the script and update it to your preference.
+
+cd into the `deploy` folder and 
 ```
 $(which ansible-playbook) playbook.yml -i ec2.py -l "tag_Name_deployer" -u ubuntu
 ```
