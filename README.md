@@ -13,7 +13,7 @@ docker run -it --rm -p 8080:80 weatherapp:latest
 ```
 On your browser, navigate to [localhost:8080](http://localhost:8080)
 
-Note: After cloning update the `.env` file with your `X-RapidAPI-Key` value before building the image. You signup and obtain your api key at https://rapidapi.com/community/api/open-weather-map
+Note: After cloning update the `.env` file with your `X-RapidAPI-Key` value before building the image. Signup and obtain your api key at https://rapidapi.com/community/api/open-weather-map
 
 Enter the city and the weather report will get generated.
 
